@@ -76,6 +76,8 @@ stages:
 
           # Set Environment Variables for Cloud One Application Security
           - script: |
+              find / -name deployment.yml
+              pwd
               sed -i 's|_TREND_AP_KEY|gcr.io/$(cloudOne_applicationSecurityKey)|' ./manifests/deployment.yml
               sed -i 's|_TREND_AP_SECRET|gcr.io/$(cloudOne_applicationSecuritySecret)|' ./manifests/deployment.yml
             displayName: "Configure Cloud One Application Security"
