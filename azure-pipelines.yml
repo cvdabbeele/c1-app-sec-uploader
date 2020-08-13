@@ -76,8 +76,8 @@ stages:
 
           # Set Environment Variables for Cloud One Application Security
           - script: |
-              sed -i 's|_TREND_AP_KEY|gcr.io/$(cloudOne_applicationSecurityKey)|' $(Pipeline.Workspace)/manifests/deployment.yml
-              sed -i 's|_TREND_AP_SECRET|gcr.io/$(cloudOne_applicationSecuritySecret)|' $(Pipeline.Workspace)/manifests/deployment.yml
+              sed -i 's|_TREND_AP_KEY|$(cloudOne_applicationSecurityKey)|' $(Pipeline.Workspace)/manifests/deployment.yml
+              sed -i 's|_TREND_AP_SECRET|$(cloudOne_applicationSecuritySecret)|' $(Pipeline.Workspace)/manifests/deployment.yml
             displayName: "Configure Cloud One Application Security"
               
           - task: KubernetesManifest@0
