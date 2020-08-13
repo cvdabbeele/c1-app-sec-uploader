@@ -1,16 +1,24 @@
-apiVersion : apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cappsecuploader 
+  name: cappsecuploader
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: cappsecuploader
   template:
     metadata:
       labels:
-        app: cappsecuploader 
+        app: cappsecuploader
     spec:
       containers:
-        - name: cappsecuploader 
+        - name: cappsecuploader
           image: c1appsecuploaderregistry3.azurecr.io/cappsecuploader
+          env:
+          - name: TREND_AP_KEY
+            value: _TREND_AP_KEY
+          - name: TREND_AP_SECRET
+            value: _TREND_AP_SECRET
           ports:
           - containerPort: 80
