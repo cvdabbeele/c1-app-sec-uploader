@@ -51,8 +51,8 @@ stages:
         openssl s_client -showcerts -connect $(cloudOne_imageSecurityHost):443 < /dev/null | \
           sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > $(cloudOne_imageSecurityHost).crt
         sudo cp $(cloudOne_imageSecurityHost).crt /usr/local/share/ca-certificates/$(cloudOne_imageSecurityHost).crt
-        sudo mkdir -p /etc/docker/certs.d/$(cloudOne_imageSecurityHost):5000
-        sudo cp $(cloudOne_imageSecurityHost).crt /etc/docker/certs.d/$(cloudOne_imageSecurityHost):5000/ca.crt
+        # sudo mkdir -p /etc/docker/certs.d/$(cloudOne_imageSecurityHost):5000
+        # sudo cp $(cloudOne_imageSecurityHost).crt /etc/docker/certs.d/$(cloudOne_imageSecurityHost):5000/ca.crt
 
         sudo update-ca-certificates
 
